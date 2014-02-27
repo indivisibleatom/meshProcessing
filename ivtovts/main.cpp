@@ -6,15 +6,21 @@
 using namespace std;
 const int MAX_LINE = 2058;
 
+//Usage ivtovts <filename> scale
 int main(int argc, char* argv[])
 {
 	int numVert = 0;
 	int numTriangle = 0;
+	float scale = 1.0f;
 	bool beginPoint = false;
 	bool beginTriangle = false;
 	fstream file;
 	fstream newfile;
 	file.open(argv[1], ios::in);
+	if (argc > 2)
+	{
+		scale = ::atof(argv[2]);
+	}
 	newfile.open("new.vts", ios::out);
 	char line[MAX_LINE];
 	vector<string> output;
@@ -59,12 +65,14 @@ int main(int argc, char* argv[])
 				ss>>coord;
 				if (i!=2)
 				{
-					oss<<coord<<",";
+					float num = ::atof(coord.c_str()) * scale;
+					oss<<num<<",";
 				}
 				else
 				{
 					coord.replace(coord.length()-1, 1,"");
-					oss<<coord;
+					float num = ::atof(coord.c_str()) * scale;
+					oss<<num;
 				}
 			}
 			oss<<endl;
