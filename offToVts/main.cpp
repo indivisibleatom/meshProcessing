@@ -12,17 +12,17 @@ int main(int argc, char* argv[])
 {
 	int numVert = 0;
 	int numTriangle = 0;
-	float scale = 1.0f;
+	float scale = 100.0f;
 	bool beginPoint = false;
 	bool beginTriangle = false;
 	fstream file;
 	fstream newFile;
 	file.open(argv[1], ios::in);
-	if (argc > 2)
+	if (argc > 3)
 	{
-		scale = ::atof(argv[2]);
+		scale = ::atof(argv[3]);
 	}
-	newFile.open("new.vts", ios::out);
+	newFile.open(argv[2], ios::out);
 	char line[MAX_LINE];
 	vector<string> output;
 	long lineCount = 0;
@@ -57,7 +57,7 @@ int main(int argc, char* argv[])
 		{
 			for (int i = 0; i < splitValues.size(); i++)
 			{
-				newFile<<splitValues[i]<<((i == splitValues.size() -1 )? "\n":",");
+				newFile<<::atof( splitValues[i].c_str() ) * scale <<((i == splitValues.size() -1 )? "\n":",");
 			}
 		}
     	lineCount++;

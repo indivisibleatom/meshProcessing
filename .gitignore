@@ -3,6 +3,7 @@
 [Bb]in
 *.sdf
 *.opensdf
+*.opendb
 *.filters
 *.user
 *.suo
