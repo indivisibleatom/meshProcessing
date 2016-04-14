@@ -8,3 +8,4 @@
 *.user
 *.suo
 ipch/
+build/

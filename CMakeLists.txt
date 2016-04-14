@@ -21,4 +21,3 @@ endif ()
 set (CMAKE_CXX_STANDARD 11)
 
 add_subdirectory (offToVts)
-add_subdirectory (ivToVts)
